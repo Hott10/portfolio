@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080d18">
+  <meta name="description" content="Vinicius Hott Martins — desenvolvimento de sites e landing pages para empresas que querem fortalecer sua presença digital.">
+  <meta property="og:title" content="Vinicius Hott Martins | Desenvolvimento Digital">
+  <meta property="og:description" content="Sites e landing pages com estratégia, tecnologia e foco na experiência do cliente.">
+  <meta property="og:type" content="website">
+  <title>Vinicius Hott Martins | Desenvolvimento Digital</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #080d18; --panel: #0e1626; --panel2: #111d31; --text: #f3f6fc;
+      --muted: #a5b1c5; --line: rgba(164,184,216,.15); --blue: #62a7ff;
+      --cyan: #64e1e8; --max: 1160px; --radius: 22px;
+    }
+    * { box-sizing: border-box; }
+    
+    /* Prevenção de scroll horizontal no mobile */
+    html { scroll-behavior: smooth; scroll-padding-top: 88px; overflow-x: hidden; }
+    body { margin: 0; background: var(--bg); color: var(--text); font-family: "DM Sans", sans-serif; line-height: 1.65; overflow-x: hidden; width: 100%; position: relative; }
+    
+    body::before { content:""; position:fixed; inset:0; pointer-events:none; z-index:-1; background: radial-gradient(ellipse at 80% 5%, rgba(42,115,220,.17), transparent 34%), radial-gradient(ellipse at 5% 35%, rgba(47,206,211,.07), transparent 30%); }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    .wrap { width:min(var(--max), calc(100% - 44px)); margin:auto; }
+    
+    .nav { position:sticky; top:0; z-index:20; backdrop-filter:blur(18px); background:rgba(8,13,24,.82); border-bottom:1px solid var(--line); }
+    .nav-inner { min-height:76px; display:flex; align-items:center; justify-content:space-between; gap:24px; }
+    .brand { display:flex; align-items:center; gap:11px; font-family:Manrope,sans-serif; font-weight:800; letter-spacing:-.04em; }
+    .brand-mark { display:grid; place-items:center; width:38px; height:38px; border-radius:12px; color:#07111d; background:linear-gradient(135deg,var(--cyan),var(--blue)); font-size:14px; }
+    .brand small { display:block; color:var(--muted); font:600 9px "DM Sans"; letter-spacing:.16em; margin-top:-4px; }
+    
+    .nav-links { display:flex; align-items:center; gap:27px; color:#c0cada; font-size:13px; }
+    .nav-links a:hover { color:white; }
+    .nav-cta,.btn { display:inline-flex; align-items:center; justify-content:center; gap:9px; border:1px solid transparent; border-radius:999px; padding:12px 19px; font-weight:700; font-size:13px; transition:.22s ease; cursor:pointer; }
+    .nav-cta,.btn-primary { background:linear-gradient(110deg,var(--cyan),var(--blue)); color:#06111d; box-shadow:0 10px 32px rgba(67,159,235,.18); }
+    .nav-cta:hover,.btn-primary:hover { transform:translateY(-2px); box-shadow:0 14px 36px rgba(67,159,235,.28); }
+    .menu-btn { display:none; border:1px solid var(--line); background:var(--panel); color:white; border-radius:12px; padding:9px 12px; }
+    
+    .hero { padding:112px 0 92px; position:relative; overflow:hidden; }
+    .hero-grid { display:grid; grid-template-columns:1.15fr .85fr; gap:64px; align-items:center; }
+    .eyebrow { display:inline-flex; align-items:center; gap:9px; color:#9cc9ff; text-transform:uppercase; letter-spacing:.17em; font-size:10px; font-weight:700; }
+    .dot { width:7px;height:7px;border-radius:50%;background:var(--cyan);box-shadow:0 0 15px var(--cyan); }
+    
+    h1,h2,h3,p { margin-top:0; }
+    h1,h2,h3 { font-family:Manrope,sans-serif; letter-spacing:-.055em; }
+    h1 { font-size:clamp(42px,6.2vw,76px); line-height:1.06; margin:22px 0 24px; max-width:760px; }
+    .gradient-text { background:linear-gradient(100deg,#f5f8ff 5%,#8fc7ff 52%,#65e4e4); -webkit-background-clip:text; background-clip:text; color:transparent; }
+    .hero-copy { color:#b2bfd2; font-size:17px; max-width:610px; line-height:1.8; }
+    .hero-actions { display:flex; gap:12px; flex-wrap:wrap; margin-top:32px; }
+    .btn-secondary { border-color:rgba(174,195,225,.25); color:#e6edf8; background:rgba(255,255,255,.025); }
+    .btn-secondary:hover { border-color:var(--blue); background:rgba(98,167,255,.08); transform:translateY(-2px); }
+    .hero-note { margin-top:34px; display:flex; align-items:center; gap:12px; color:#8493aa; font-size:12px; }
+    .hero-note span { height:1px;width:35px;background:var(--line); }
+    
+    .visual { position:relative; min-height:400px; display:grid; place-items:center; }
+    .orbit { width:min(390px,100%); aspect-ratio:1; border:1px solid rgba(125,174,237,.18); border-radius:50%; display:grid;place-items:center; position:relative; background:radial-gradient(circle,rgba(56,130,214,.13),transparent 62%); }
+    .orbit:before,.orbit:after { content:"";position:absolute;border:1px solid rgba(125,174,237,.13);border-radius:50%;inset:34px; }
+    .orbit:after { inset:76px; }
+    .core { width:150px;height:150px;border-radius:38px;display:grid;place-items:center;background:linear-gradient(145deg,#173b62,#0e1b30);border:1px solid rgba(142,198,255,.4);box-shadow:0 0 90px rgba(56,145,231,.23),inset 0 1px rgba(255,255,255,.15);font:800 39px Manrope;letter-spacing:-.09em; }
+    .float-card { position:absolute; padding:13px 16px; background:rgba(14,24,41,.92); border:1px solid rgba(154,185,225,.2); border-radius:15px; box-shadow:0 15px 45px rgba(0,0,0,.22); font-size:12px; color:#dbe8fa; backdrop-filter:blur(12px); }
+    .float-card b { display:block; font:700 13px Manrope; }
+    .fc1 { top:13%;left:-2%; }.fc2 { right:-3%;top:30%; }.fc3 { bottom:12%;left:3%; }
+    
+    .section { padding:94px 0; border-top:1px solid var(--line); }
+    .section-head { max-width:680px; margin-bottom:42px; }
+    .kicker { color:var(--cyan); text-transform:uppercase; letter-spacing:.18em; font-size:10px; font-weight:700; }
+    h2 { font-size:clamp(31px,4.2vw,49px); line-height:1.14; margin:13px 0 16px; }
+    .section-lead { color:var(--muted); font-size:15px; max-width:650px; }
+    
+    .about-grid { display:grid; grid-template-columns:.9fr 1.1fr; gap:64px; align-items:start; }
+    .about-card { padding:28px; border-radius:var(--radius); border:1px solid var(--line); background:linear-gradient(145deg,rgba(20,36,59,.86),rgba(11,19,33,.9)); }
+    .about-card .initials { font:800 54px Manrope; letter-spacing:-.08em; color:#8fc5ff; }
+    .about-card p { color:var(--muted); margin:9px 0 0; }
+    .about-text p { color:#b5c1d2; }
+    .chips { display:flex; flex-wrap:wrap; gap:9px; margin-top:23px; }
+    .chip { border:1px solid var(--line); border-radius:999px; padding:7px 11px; color:#c7d4e6; font-size:11px; background:rgba(255,255,255,.025); }
+    
+    .services { display:grid;grid-template-columns:repeat(4,1fr);gap:14px; }
+    .service,.project,.step { border:1px solid var(--line);background:linear-gradient(145deg,rgba(17,29,49,.92),rgba(10,17,29,.92));border-radius:19px; }
+    .service { padding:23px 20px; min-height:220px; transition:.25s; }
+    .service:hover,.project:hover { transform:translateY(-5px); border-color:rgba(100,184,255,.45); }
+    .icon-box { width:42px;height:42px;display:grid;place-items:center;border-radius:13px;background:rgba(91,164,244,.12);color:#8dc4ff;font-size:19px;margin-bottom:22px; }
+    .service h3 { font-size:17px; margin-bottom:9px; }
+    .service p { color:var(--muted);font-size:12px;line-height:1.7;margin:0; }
+    
+    .projects { display:grid;grid-template-columns:repeat(2,1fr);gap:20px; }
+    .project { overflow:hidden; transition:.25s; }
+    .project-img-wrapper { width:100%; height:260px; overflow:hidden; border-bottom:1px solid var(--line); }
+    .project-img-wrapper img { width:100%; height:100%; object-fit:cover; object-position:top; transition:transform .4s ease; }
+    .project:hover .project-img-wrapper img { transform:scale(1.05); }
+    
+    .project-content { padding:23px 24px 25px; }
+    .project-meta { display:flex;justify-content:space-between;gap:12px;align-items:center;color:#8da0b9;font-size:10px;text-transform:uppercase;letter-spacing:.13em; }
+    .project h3 { font-size:22px;margin:10px 0 8px; }
+    .project p { color:var(--muted);font-size:13px;min-height:44px;margin-bottom:18px; }
+    .project-link { color:#06111d;font-size:14px;font-weight:800;display:inline-flex;gap:10px;align-items:center;justify-content:center;padding:13px 22px;min-height:48px;border-radius:12px;background:linear-gradient(110deg,var(--cyan),var(--blue));box-shadow:0 8px 24px rgba(67,159,235,.22);transition:transform .22s ease,box-shadow .22s ease,filter .22s ease; }
+    .project-link:hover { color:#06111d;transform:translateY(-3px);box-shadow:0 13px 30px rgba(67,159,235,.35);filter:brightness(1.08); }
+    .project-link:focus-visible { outline:3px solid #fff;outline-offset:4px; }
+    .project-link:active { transform:translateY(-1px); }
+    
+    .benefits { display:grid;grid-template-columns:repeat(3,1fr);gap:14px; }
+    .benefit { padding:22px 20px;border-left:2px solid rgba(100,225,232,.55);background:rgba(255,255,255,.025);border-radius:0 14px 14px 0; }
+    .benefit h3 { font-size:16px;margin-bottom:7px; }
+    .benefit p { color:var(--muted);font-size:12px;margin:0; }
+    
+    .steps { display:grid;grid-template-columns:repeat(5,1fr);gap:10px; }
+    .step { padding:20px 16px; }
+    .step-num { color:var(--cyan);font:800 12px Manrope;letter-spacing:.1em; }
+    .step h3 { font-size:15px;margin:15px 0 7px; }
+    .step p { color:var(--muted);font-size:11px;margin:0; }
+    
+    /* Contact Box Aprimorado */
+    .contact-box { border:1px solid rgba(110,178,247,.25);border-radius:28px;padding:clamp(28px,6vw,62px);background:radial-gradient(ellipse at 90% 10%,rgba(64,146,229,.2),transparent 42%),linear-gradient(135deg,#111f35,#0c1423);display:flex;align-items:center;justify-content:space-between;gap:40px; flex-wrap:wrap; width: 100%; box-sizing: border-box; }
+    .contact-info { flex:1 1 100%; } /* Corrigido de min-width para flex 100% para evitar scroll horizontal */
+    .contact-box h2 { max-width:650px;margin-top:12px; }
+    .contact-box p { color:var(--muted);max-width:570px;margin-bottom:18px; }
+    
+    .contact-badges { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+    .contact-badge { display:inline-flex; align-items:center; gap:8px; font-family:Manrope, sans-serif; font-size:16px; font-weight:700; color:#fff; background:rgba(255,255,255,.03); padding:10px 18px; border-radius:12px; border:1px solid rgba(255,255,255,.1); transition: background .22s ease, transform .22s ease; text-decoration:none; }
+    a.contact-badge:hover { background:rgba(255,255,255,.08); transform: translateY(-2px); }
+    .contact-badge svg.wpp-icon { color:#25D366; }
+    .contact-badge svg.in-icon { color:#62a7ff; }
+    
+    footer { border-top:1px solid var(--line);padding:28px 0;color:#8795aa;font-size:11px; }
+    .footer-inner { display:flex;justify-content:space-between;gap:18px;align-items:center; flex-wrap: wrap; }
+    .footer-links { display:flex;gap:18px;flex-wrap:wrap; align-items:center; }
+    .footer-links a:hover { color:white; }
+    .footer-links svg { vertical-align:middle; margin-right:4px; }
+    
+    .reveal { opacity:0;transform:translateY(18px);transition:opacity .65s ease,transform .65s ease; }
+    .reveal.visible { opacity:1;transform:none; }
+    
+    /* Botão Flutuante do WhatsApp */
+    .floating-wpp { position:fixed; bottom:30px; right:30px; z-index:99; background:#25d366; color:white; width:60px; height:60px; border-radius:50%; display:grid; place-items:center; box-shadow:0 8px 24px rgba(37,211,102,.35); transition:transform .3s ease, box-shadow .3s ease; }
+    .floating-wpp:hover { transform:translateY(-5px) scale(1.05); box-shadow:0 12px 32px rgba(37,211,102,.45); color:white; }
+    
+    /* Ajustes específicos para telemóveis */
+    @media(max-width:900px) {
+      .hero-grid,.about-grid { grid-template-columns:1fr;gap:35px; }
+      .hero { padding:82px 0 65px; }.visual{min-height:330px}.orbit{width:310px}
+      .services { grid-template-columns:repeat(2,1fr); }.steps{grid-template-columns:repeat(3,1fr)}
+      .nav-links { gap:15px; }.nav-links a{font-size:11px}
+    }
+    @media(max-width:640px) {
+      .wrap{width:min(100% - 32px,var(--max))}
+      .nav-inner{min-height:67px}.menu-btn{display:block}
+      .nav-links { display:none;position:absolute;top:67px;left:0;right:0;padding:18px 22px 22px;background:#0b1322;border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch;gap:15px; }
+      .nav-links.open{display:flex}.nav-links a{font-size:14px}
+      .nav-cta{display:none}.hero{padding:68px 0 55px}
+      h1{font-size:clamp(39px,12vw,57px)}.hero-copy{font-size:15px}
+      
+      .visual{min-height:290px}.orbit{width:260px}.core{width:112px;height:112px;border-radius:30px;font-size:31px}
+      /* Cartões flutuantes adaptados para não saírem da margem */
+      .float-card{font-size:10px;padding:10px 12px}.fc1{left:0}.fc2{right:0}
+      
+      .section{padding:70px 0}.services,.projects,.benefits{grid-template-columns:1fr}
+      .service{min-height:0}.project-img-wrapper{height:205px}.project p{min-height:0}.project-link{width:100%;min-height:52px;font-size:14px}
+      .steps{grid-template-columns:1fr 1fr}
+      
+      /* Ajustes na caixa de contacto para ecrãs pequenos */
+      .contact-box{align-items:flex-start;flex-direction:column; gap:25px;}
+      .contact-badges { width: 100%; }
+      .contact-badge { font-size: 14px; padding: 10px 14px; flex: 1 1 auto; justify-content: center; }
+      .contact-box .btn-primary { width: 100%; text-align: center; }
+      
+      .footer-inner{align-items:flex-start;flex-direction:column}
+      .floating-wpp { width:52px; height:52px; bottom:20px; right:20px; }
+    }
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}*,*::before,*::after{animation:none!important;transition:none!important}}
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="#inicio" aria-label="Vinicius Hott, início">
+        <span class="brand-mark">VH</span><span>VINICIUS HOTT<small>DESENVOLVIMENTO DIGITAL</small></span>
+      </a>
+      <nav class="nav-links" id="navLinks" aria-label="Navegação principal">
+        <a href="#sobre">Sobre</a><a href="#solucoes">Soluções</a><a href="#projetos">Projetos</a><a href="#processo">Processo</a>
+      </nav>
+      <a class="nav-cta" href="#contato">Vamos conversar ↗</a>
+      <button class="menu-btn" id="menuBtn" aria-label="Abrir menu" aria-expanded="false">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="wrap hero-grid">
+        <div class="reveal">
+          <div class="eyebrow"><span class="dot"></span> Tecnologia com visão de negócio</div>
+          <h1>Seu negócio tem potencial. <span class="gradient-text">Sua presença digital precisa acompanhar.</span></h1>
+          <p class="hero-copy">Desenvolvo sites e landing pages que apresentam o valor da sua empresa, fortalecem sua credibilidade e facilitam a conexão com novos clientes.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#projetos">Conheça meus projetos <span>↗</span></a>
+            <a class="btn btn-secondary" href="https://www.linkedin.com/in/vinicius-hott/" target="_blank" rel="noopener" style="padding-left:14px">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              LinkedIn
+            </a>
+            <a class="btn btn-secondary" href="#contato">Vamos conversar</a>
+          </div>
+          <div class="hero-note"><span></span> Estratégia · Design · Desenvolvimento</div>
+        </div>
+        <div class="visual reveal" aria-label="Elemento gráfico abstrato de tecnologia">
+          <div class="orbit"><div class="core">VH<span style="color:#64e1e8">.</span></div></div>
+          <div class="float-card fc1"><b>Digital first</b>Presença que gera confiança</div>
+          <div class="float-card fc2"><b>Experiência</b>Design responsivo</div>
+          <div class="float-card fc3"><b>Desenvolvimento</b>Ideia → solução digital</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="sobre">
+      <div class="wrap about-grid">
+        <div class="about-card reveal">
+          <div class="eyebrow">Quem está por trás</div>
+          <div class="initials">VH.</div>
+          <h3 style="font-size:22px;margin:0">Vinicius Hott Martins</h3>
+          <p>Desenvolvedor Full Stack · Soluções digitais</p>
+          <div class="chips"><span class="chip">ADS</span><span class="chip">IA & Negócios</span><span class="chip">Full Stack</span></div>
+        </div>
+        <div class="about-text reveal">
+          <div class="kicker">Sobre mim</div>
+          <h2>Tecnologia com propósito. <span class="gradient-text">Soluções com direção.</span></h2>
+          <p>Sou formado em Análise e Desenvolvimento de Sistemas, pós-graduado em Inteligência Artificial e Negócios e atuo como desenvolvedor Full Stack. Atualmente, trabalho na <strong>Portal Concursos</strong>, participando do desenvolvimento e da evolução contínua da plataforma.</p>
+          <p>Meu trabalho une conhecimento técnico e visão de negócio para criar experiências digitais claras, funcionais e alinhadas aos objetivos de cada empresa. Mais do que escrever código, busco entender o desafio, organizar a solução e construir uma presença digital que faça sentido para quem visita e para quem administra.</p>
+          <p>Utilizo tecnologias modernas e ferramentas de inteligência artificial como apoio ao processo de desenvolvimento, mantendo atenção à qualidade, à experiência do usuário e aos detalhes técnicos.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="solucoes">
+      <div class="wrap">
+        <div class="section-head reveal"><div class="kicker">Como posso ajudar</div><h2>Uma presença digital pensada para <span class="gradient-text">o seu negócio.</span></h2><p class="section-lead">Soluções sob medida para apresentar sua empresa com clareza, profissionalismo e uma experiência simples para o cliente.</p></div>
+        <div class="services">
+          <article class="service reveal"><div class="icon-box">↗</div><h3>Landing pages</h3><p>Páginas objetivas para destacar uma oferta, apresentar serviços e direcionar visitantes para o contato.</p></article>
+          <article class="service reveal"><div class="icon-box">▦</div><h3>Sites institucionais</h3><p>Uma casa digital para sua empresa: história, serviços, diferenciais, localização e canais de atendimento.</p></article>
+          <article class="service reveal"><div class="icon-box">✳</div><h3>Experiência digital</h3><p>Interfaces responsivas, navegação intuitiva e conteúdo organizado para diferentes dispositivos.</p></article>
+          <article class="service reveal"><div class="icon-box">⌘</div><h3>Modernização</h3><p>Melhorias em sites existentes, organização de conteúdo e evolução da experiência digital.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="projetos">
+      <div class="wrap">
+        <div class="section-head reveal"><div class="kicker">Conheça alguns dos meus projetos</div><h2>Ideias diferentes. <span class="gradient-text">Experiências digitais.</span></h2><p class="section-lead">Uma seleção de projetos demonstrativos desenvolvidos para segmentos distintos. Cada projeto explora uma forma de apresentar serviços, marcas e informações na web.</p></div>
+        <div class="projects">
+          
+          <article class="project reveal">
+            <div class="project-img-wrapper">
+              <img src="imagens/cafran.png" alt="Preview do site Cafran Idiomas">
+            </div>
+            <div class="project-content"><div class="project-meta"><span>Educação · Site institucional</span><span>01 / 04</span></div><h3>Cafran Idiomas</h3><p>Projeto institucional para apresentar uma escola de idiomas, seus cursos, estrutura e proposta educacional.</p><a class="project-link" href="https://hott10.github.io/site_cafran/" target="_blank" rel="noopener">Visitar projeto ↗</a></div>
+          </article>
+          
+          <article class="project reveal">
+            <div class="project-img-wrapper">
+              <img src="imagens/advocacia.png" alt="Preview do site Martins Advocacia">
+            </div>
+            <div class="project-content"><div class="project-meta"><span>Jurídico · Site institucional</span><span>02 / 04</span></div><h3>Martins Advocacia</h3><p>Apresentação institucional de escritório, com áreas de atuação, informações e caminhos de contato.</p><a class="project-link" href="https://hott10.github.io/site_advocacia/" target="_blank" rel="noopener">Visitar projeto ↗</a></div>
+          </article>
+          
+          <article class="project reveal">
+            <div class="project-img-wrapper">
+              <img src="imagens/Lumina _ Clínica de Estética Avançada - Google Chrome 05_11_2026 23_11_15.png" alt="Preview do site Lumina Estética">
+            </div>
+            <div class="project-content"><div class="project-meta"><span>Beleza · Landing page</span><span>03 / 04</span></div><h3>Lumina Estética</h3><p>Landing page conceitual para apresentar tratamentos, diferenciais e facilitar o caminho até o agendamento.</p><a class="project-link" href="https://hott10.github.io/site_estetica/" target="_blank" rel="noopener">Visitar projeto ↗</a></div>
+          </article>
+          
+          <article class="project reveal">
+            <div class="project-img-wrapper">
+              <img src="imagens/trainerpro.png" alt="Preview do site Trainer Pro">
+            </div>
+            <div class="project-content"><div class="project-meta"><span>Fitness · Landing page</span><span>04 / 04</span></div><h3>Trainer Pro</h3><p>Landing page demonstrativa para personal trainer, com apresentação de serviços e direcionamento para contato.</p><a class="project-link" href="https://hott10.github.io/site_personal/" target="_blank" rel="noopener">Visitar projeto ↗</a></div>
+          </article>
+
+        </div>
+        <p style="font-size:11px;color:#8291a7;margin:17px 2px 0">Projetos demonstrativos para apresentação de habilidades e conceitos de desenvolvimento.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="section-head reveal"><div class="kicker">O que orienta meu trabalho</div><h2>Não é só sobre ter um site. É sobre <span class="gradient-text">como sua empresa é percebida.</span></h2></div>
+        <div class="benefits">
+          <article class="benefit reveal"><h3>Credibilidade</h3><p>Apresente sua empresa de forma profissional e facilite o acesso às informações importantes.</p></article>
+          <article class="benefit reveal"><h3>Clareza</h3><p>Organize serviços, diferenciais e formas de atendimento em uma experiência fácil de entender.</p></article>
+          <article class="benefit reveal"><h3>Experiência</h3><p>Ofereça uma navegação consistente em celulares, tablets e computadores.</p></article>
+          <article class="benefit reveal"><h3>Foco no contato</h3><p>Crie caminhos claros para que o visitante tire dúvidas ou solicite um orçamento.</p></article>
+          <article class="benefit reveal"><h3>Qualidade técnica</h3><p>Cuide de responsividade, estrutura, acessibilidade e desempenho desde o desenvolvimento.</p></article>
+          <article class="benefit reveal"><h3>Visão de negócio</h3><p>Comece pelo objetivo da empresa e escolha a solução digital de acordo com a necessidade.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="processo">
+      <div class="wrap">
+        <div class="section-head reveal"><div class="kicker">Processo de trabalho</div><h2>Do primeiro diálogo à <span class="gradient-text">publicação.</span></h2><p class="section-lead">Um processo transparente para que você saiba o que acontece em cada etapa do projeto.</p></div>
+        <div class="steps">
+          <article class="step reveal"><div class="step-num">01 / DIAGNÓSTICO</div><h3>Entender</h3><p>Conhecer sua empresa, público, objetivos e necessidades.</p></article>
+          <article class="step reveal"><div class="step-num">02 / PLANEJAMENTO</div><h3>Estruturar</h3><p>Definir conteúdo, páginas, funcionalidades e direção visual.</p></article>
+          <article class="step reveal"><div class="step-num">03 / DESENVOLVIMENTO</div><h3>Construir</h3><p>Transformar o planejamento em uma experiência digital.</p></article>
+          <article class="step reveal"><div class="step-num">04 / VALIDAÇÃO</div><h3>Aprimorar</h3><p>Testar em dispositivos e validar os detalhes combinados.</p></article>
+          <article class="step reveal"><div class="step-num">05 / PUBLICAÇÃO</div><h3>Entregar</h3><p>Publicar o site e orientar sobre os próximos passos.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contato">
+      <div class="wrap">
+        <div class="contact-box reveal">
+          <div class="contact-info">
+            <div class="kicker">Vamos conversar</div>
+            <h2>Sua empresa merece uma presença digital à altura.</h2>
+            <p>Conte um pouco sobre seu negócio e o que você gostaria de construir. Vamos conversar sobre uma solução adequada à sua realidade.</p>
+            
+            <div class="contact-badges">
+              <div class="contact-badge">
+                <svg class="wpp-icon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                (61) 99406-7138
+              </div>
+              <a href="https://www.linkedin.com/in/vinicius-hott/" target="_blank" rel="noopener" class="contact-badge">
+                <svg class="in-icon" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                LinkedIn
+              </a>
+            </div>
+
+          </div>
+          <a class="btn btn-primary" id="whatsappLink" href="https://wa.me/" target="_blank" rel="noopener" style="padding:18px 28px; font-size:15px">
+            Falar pelo WhatsApp ↗
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <div>© <span id="year"></span> Vinicius Hott Martins. Desenvolvimento digital.</div>
+      <div class="footer-links">
+        <a href="#inicio">Voltar ao topo ↑</a>
+        <a href="https://www.linkedin.com/in/vinicius-hott/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          LinkedIn
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Botão Flutuante WPP -->
+  <a href="https://wa.me/5561994067138?text=Ol%C3%A1%2C%20Vinicius!%20Conheci%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20conversar%20sobre%20um%20site%20para%20minha%20empresa." class="floating-wpp" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
+    <svg viewBox="0 0 24 24" width="32" height="32" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+
+  <script>
+    const WHATSAPP_NUMBER = "5561994067138";
+    const message = encodeURIComponent("Olá, Vinicius! Conheci seu portfólio e gostaria de conversar sobre um site para minha empresa.");
+    const whatsapp = document.getElementById("whatsappLink");
+    if (WHATSAPP_NUMBER !== "55DDDNÚMERO") whatsapp.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${message}`;
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const menuBtn = document.getElementById("menuBtn");
+    const navLinks = document.getElementById("navLinks");
+    menuBtn.addEventListener("click", () => {
+      const opened = navLinks.classList.toggle("open");
+      menuBtn.setAttribute("aria-expanded", String(opened));
+      menuBtn.textContent = opened ? "✕" : "☰";
+    });
+    navLinks.querySelectorAll("a").forEach(link => link.addEventListener("click", () => {
+      navLinks.classList.remove("open"); menuBtn.setAttribute("aria-expanded","false"); menuBtn.textContent="☰";
+    }));
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) { entry.target.classList.add("visible"); observer.unobserve(entry.target); }
+      });
+    }, { threshold: .12 });
+    document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
